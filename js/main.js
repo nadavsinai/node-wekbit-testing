@@ -1,7 +1,6 @@
 var file = require('./js/file.js');
 var gui = require('nw.gui');
-gui.Window.get().menu = require('.js/menu.js');
-
+gui.Window.get().menu = require('./js/menu.js')(gui);
 
 function clickInput(id) {
     var event = document.createEvent('MouseEvents');
@@ -16,6 +15,8 @@ document.addEventListener('keyup', function (e) {
         clickInput('save');
     } else if (e.keyCode == 'N'.charCodeAt(0) && e.ctrlKey) {
         gui.Window.open('index.html');
+    } else if (e.keyCode == 'Q'.charCodeAt(0) && e.ctrlKey) {
+        gui.App.quit();
     }
 });
 

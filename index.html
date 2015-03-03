@@ -8,5 +8,15 @@
 <input id="save" type="file" nwsaveas style="display:none" accept="text/*"/>
 <textarea id="editor" style="position:fixed;top:0;bottom:0;left:0;right:0;width:100%;"></textarea>
 <script src="js/main.js"></script>
+<script>
+    var gui = require('nw.gui');
+    document.quit = gui.App.quit;
+    var gulp = require('gulp');
+    gulp.task('reload', function () {
+        if (location) location.reload();
+    });
+
+    gulp.watch('js/**/*.js', ['reload']);
+</script>
 </body>
 </html>
