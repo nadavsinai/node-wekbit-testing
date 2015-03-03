@@ -10,6 +10,7 @@ function File() {
     function save(path, document) {
         var text = document.getElementById('editor').value;
         fs.writeFile(path, text);
+
     }
 
     this.open = open;

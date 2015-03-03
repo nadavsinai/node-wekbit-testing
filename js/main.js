@@ -1,6 +1,7 @@
-var file = require('./js/file.js');
+var path = require('path');
+var file = require(path.join(process.cwd(), '/js/file.js'));
 var gui = require('nw.gui');
-gui.Window.get().menu = require('./js/menu.js')(gui);
+gui.Window.get().menu = require(path.join(process.cwd(), '/js/menu.js'))(gui);
 
 function clickInput(id) {
     var event = document.createEvent('MouseEvents');

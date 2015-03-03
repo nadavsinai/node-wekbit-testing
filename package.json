@@ -15,10 +15,15 @@
     "nw": "^0.12.0-rc1"
   },
   "devDependencies": {
-    "chai": "^2.1.0",
     "gulp": "^3.8.11",
-    "gulp-mocha": "^2.0.0",
-    "mocha": "^2.1.0",
+    "gulp-jshint": "^1.9.2",
+    "gulp-protractor": "0.0.12",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^0.2.7",
+    "karma-jasmine": "^0.3.5",
+    "karma-nodewebkit-launcher": "0.0.9",
     "protractor": "^1.7.0"
   }
 }

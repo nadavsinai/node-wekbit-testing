@@ -1,13 +1,37 @@
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
-require('./utils.js').chai();
-var testFiles= './tests/unit/*.spec.js';
 
+var unitTestFiles = './tests/unit/*.spec.js';
+var e2eTestFiles = './tests/e2e/*.spec.js';
+var jsFile = './js/**/*.js';
 
-gulp.task('test', function () {
-    return gulp.src(testFiles, {read: false})
-        .pipe(mocha({reporter: 'nyan'}));
+var jshint = require('gulp-jshint');
+var karma = require('karma').server;
+var protractor = require("gulp-protractor").protractor;
+
+gulp.task('test', function (done) {
+    process.env.NODEWEBKIT_BIN = __dirname + '/node_modules/.bin/nw';
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done);
 });
-gulp.task('default',function(){
-    gulp.watch(testFiles, ['test']);
+
+gulp.task('lint', function (done) {
+    return gulp.src(jsFile)
+        .pipe(jshint());
+    //.pipe(jshint.reporter('YOUR_REPORTER_HERE'));
+});
+gulp.task('e2e', function (done) {
+    gulp.src([e2eTestFiles])
+        .pipe(protractor({
+            configFile: "./protractor.conf.js",
+            args: []
+        }))
+        .on('error', function (e) {
+            throw e
+        })
+});
+
+gulp.task('default', function () {
+    gulp.watch([unitTestFiles, jsFile], ['test']);
 });
