@@ -6,6 +6,7 @@ var jsFile = './js/**/*.js';
 
 var jshint = require('gulp-jshint');
 var karma = require('karma').server;
+var shell = require('gulp-shell');
 var protractor = require("gulp-protractor").protractor;
 
 gulp.task('test', function (done) {
@@ -32,6 +33,10 @@ gulp.task('e2e', function (done) {
         })
 });
 
+gulp.task('run',function(){
+    shell.task(['echo starting nw...','./node_modules/.bin/nw']);
+});
 gulp.task('default', function () {
+    shell.task('nw');
     gulp.watch([unitTestFiles, jsFile], ['test']);
 });
