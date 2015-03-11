@@ -1,5 +1,4 @@
 function Menu(gui) {
-
     var menu = new gui.Menu({type: 'menubar'});
     menu.append(new gui.MenuItem({
         label: 'File',
@@ -20,6 +19,7 @@ function Menu(gui) {
             gui.Window.get().close();
         }
     }));
+    menu.createMacBuiltin("Text Edit");
     return menu;
-};
+}
 module.exports = Menu;

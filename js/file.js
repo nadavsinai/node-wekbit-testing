@@ -17,4 +17,4 @@ function File() {
     this.save = save;
 }
 
-module.exports = new File;
+module.exports = new File();
