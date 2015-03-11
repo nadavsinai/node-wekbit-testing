@@ -19,7 +19,9 @@ function Menu(gui) {
             gui.Window.get().close();
         }
     }));
-    menu.createMacBuiltin("Text Edit");
+    if (process.platform === 'darwin'){
+        menu.createMacBuiltin("Text Editor");
+    }
     return menu;
 }
 module.exports = Menu;
