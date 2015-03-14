@@ -15,7 +15,7 @@ switch (process.platform) {
 }
 exports.config = {
     directConnect: true,
-    chromeDriver: './support/chromedriver',
+    chromeDriver: '/usr/local/bin/chromedriver', //this needs to be updated per OS, download binary from dl.nwjs.io
     capabilities: {
         browserName: 'chrome',
         chromeOptions: {
